@@ -5,7 +5,7 @@ class SubtractExpression extends BinaryExpression {
       super(lft, rht, "-");
    }
 
-   public double _applyOperator(double left, double right)
+   protected double _applyOperator(double left, double right)
    {
       return left - right;
    }
