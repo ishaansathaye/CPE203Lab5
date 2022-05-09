@@ -20,6 +20,6 @@ public abstract class BinaryExpression implements Expression {
         
     }
 
-    public abstract double _applyOperator(double left, double right);
+    protected abstract double _applyOperator(double left, double right);
     
 }

@@ -29,9 +29,28 @@ class CourseSection
          return false;
       }
       CourseSection other = (CourseSection) o;
-      return this.prefix.equals(other.prefix) && this.number.equals(other.number) 
-         && this.enrollment == other.enrollment && this.startTime.equals(other.startTime)
-         && this.endTime.equals(other.endTime);
+      boolean result = true;
+      if (this.prefix == null) {
+         result = (other.prefix == null);
+      } else {
+         result = this.prefix.equals(other.prefix);
+      }
+      if (this.number == null) {
+         result = (result && (other.number == null));
+      } else {
+         result = (result && this.number.equals(other.number));
+      }
+      if (this.startTime == null) {
+         result = (result && (other.startTime == null));
+      } else {
+         result = (result && this.startTime.equals(other.startTime));
+      }
+      if (this.endTime == null) {
+         result = (result && (other.endTime == null));
+      } else {
+         result = (result && this.endTime.equals(other.endTime));
+      }
+      return result && (this.enrollment == other.enrollment);
    }
 
    @Override
@@ -40,7 +59,7 @@ class CourseSection
       
       hash = 31 * hash + ((prefix == null) ? 0 : prefix.hashCode());
       hash = 31 * hash + ((number == null) ? 0 : number.hashCode());
-      hash = 31 * hash + enrollment;
+      hash = 31 * hash + ((Integer)enrollment).hashCode();
       hash = 31 * hash + ((startTime == null) ? 0 : startTime.hashCode());
       hash = 31 * hash + ((endTime == null) ? 0 : endTime.hashCode());
 
